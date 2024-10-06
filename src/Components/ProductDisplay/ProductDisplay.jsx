@@ -42,9 +42,7 @@ const ProductDisplay = (props) => {
 
             </div>
             <div className="productdisplay-right-description">
-                A lightweight, usually knitted pullover shit, close fitting with a
-                round neckline and short sleeves, worn as an undershirt or
-                outer garment.
+               For casual wear.
 
             </div>
             
@@ -59,8 +57,8 @@ const ProductDisplay = (props) => {
                 </div>
             </div>
             <button onClick ={()=>{addToCart(product.id)}}>ADD TO CART</button>
-            <p className= 'productdisplay-right-category'><span>Category:</span>Women, T-Shirt, Crop Top</p>
-            <p className= 'productdisplay-right-category'><span>Tags :</span>Modern, Latest</p>
+            <p className= 'productdisplay-right-category'><span>Category:</span> Men/Women/Kids </p>
+            <p className= 'productdisplay-right-category'><span>Tags :</span> Modern, Latest</p>
         </div>
       
     </div>
