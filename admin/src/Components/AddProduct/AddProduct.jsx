@@ -22,7 +22,7 @@ const AddProduct = () => {
  }
 
  const changeHandler = (e)=>{
-   setProductDetails({...productDetails,[e.target.name]:e.target.value})
+   setProductDetails({...productDetails,[e.target.name]:e.target.value}) //...productDetails to create an object with the same properties that productDetails is holding
 
  }
 
@@ -41,24 +41,28 @@ const AddProduct = () => {
 
     },
     body: formData,
-  }).then((resp) => resp.json()).then((data)=>{responseData=data})
-    
-  if(responseData.success){//if true, our img stored in multerimgstorage 
-   //then well get the URL of that image
+  }).then((resp) => resp.json()).then((data)=>{responseData=data}) // this line takes the response object resp returned from the server and converts it to JSON format.
+   // this JSON data is stored into responseData                                                              
+  
+  if(responseData.success){// Check if the image was successfully uploaded
+    // If true, we'll get the URL of the stored image
 
-   product.image= responseData.image_url;
+   product.image= responseData.image_url;// Store the image URL in the product object
    console.log(product);
-   await fetch('http://localhost:4000/addporduct',{
-    method: 'POST',
-    headers: {
-      Accept: 'application/jason',
-      'Content-Type': 'application/jason'
-    },
-    body: JSON.stringify(product),
 
-    }).then((resp)=>resp.json()).then((data)=>{
+  
+
+   await fetch('http://localhost:4000/addporduct',{// Send a POST request to add the product
+    method: 'POST', // Specify this is a POST request
+    headers: {
+      Accept: 'application/jason', // Indicate the server we expect a JSON response
+      'Content-Type': 'application/jason' // Specify that we're sending JSON data
+    },
+    body: JSON.stringify(product), // Convert the product object to a JSON string
+
+    }).then((resp)=>resp.json()).then((data)=>{ // Convert the response to JSON
       data.success?alert("Product Added"): alert("Failed")
-    })
+    }) // Alert based on the response
     
 
   }
